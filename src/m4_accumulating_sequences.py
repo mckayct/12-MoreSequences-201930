@@ -19,12 +19,12 @@ def main():
     run_test_make_less_simple_string()
 
     # -------------------------------------------------------------------------
-    # TODO: 8. Uncomment the tests below before working _TODO_ 9.
+    # DONE: 8. Uncomment the tests below before working _TODO_ 9.
     #   They launch annoying rg.RoseWindows on each run that you don't want
     #   until you get to _TODO_ 9 and _TODO_ 10.
     # -------------------------------------------------------------------------
-    # run_test_draw_shapes()
-    # run_test_rectangles_from_circles()
+    run_test_draw_shapes()
+    run_test_rectangles_from_circles()
 
 
 def run_test_make_simple_list():
@@ -190,15 +190,16 @@ def make_less_simple_string(m, n):
       :type n: int
     """
     # -------------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
 
     sequence = ''
     for k in range(n - m + 1):
-        sequence = sequence + str(k + m)+'-'
-
-    return (sequence)
+        sequence = sequence + str(k + m)
+        if k + m != n:
+            sequence = sequence + '-'
+    return sequence
 
 
 def run_test_draw_shapes():
@@ -279,7 +280,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #             *** Make sure you do _TODO_ 8 in main first! ***
     # The testing code is already written for you; you enabled it via _TODO_ 8.
     #
@@ -291,6 +292,10 @@ def draw_shapes(shapes, window):
     ###########################################################################
     # -------------------------------------------------------------------------
 
+    sequence = ()
+    for k in range(len(shapes)):
+        shape = shapes[k].attach_to(window)
+        window.render()
 
 
 def run_test_rectangles_from_circles():
@@ -392,7 +397,7 @@ def rectangles_from_circles(circles):
       :rtype: list of rg.Rectangles
     """
     # -------------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ###########################################################################
@@ -403,6 +408,15 @@ def rectangles_from_circles(circles):
     #            in this function, so DON'T draw anything in here!
     ###########################################################################
     # -------------------------------------------------------------------------
+
+    sequence = []
+    for k in range(len(circles)):
+        rect = rg.Rectangle(rg.Point(circles[k].center.x + circles[k].radius,
+                                     circles[k].center.y + circles[k].radius),
+                            rg.Point(circles[k].center.x - circles[k].radius,
+                                     circles[k].center.y - circles[k].radius))
+        sequence.append(rect)
+    return sequence
 
 
 # -----------------------------------------------------------------------------
